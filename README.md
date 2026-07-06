@@ -1,16 +1,141 @@
-# React + Vite
+# ⚔️ PDE 闯关
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> 用一次真实动手，建立对 AI 开发的信心。
 
-Currently, two official plugins are available:
+PDE 闯关是一个面向产品和运营同学的实战项目。目标只有一个：**用 Claude Code 完整跑一遍前端全栈开发的全链路**——不是看视频，是手把手在真实环境里写代码、提 PR、上线。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+AI 工具已经到位，但大多数产品/运营同学不知道「我能用这个工具干什么」。这个项目就是把认知缺口补上：7 个关卡，从改一行字到部署上线，走完你就知道答案了。
 
-## React Compiler
+🎉 **在线体验**：https://my-first-app-six-neon.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 📋 这是什么
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+一个跑在本地的闯关 Web 应用：
+
+- 7 关，覆盖前端全栈开发全链路（热更新 → 组件 → 样式 → 联调 → Git → PR → 上线）
+- 每关有「📖 详细引导」：手把手教，含代码、提示、常见坑
+- 闯关进度存浏览器本地，刷新不丢
+- 带一个本地后端，演示前后端联调（排行榜 / 进度接口）
+
+技术栈：React 19 + Vite + Express，足够简单，也足够真实。
+
+---
+
+## 🚀 怎么跑起来
+
+> 前置：电脑装好 [Node.js](https://nodejs.org)（建议 18+）和 [git](https://git-scm.com)。
+
+### 1. 拿到代码
+
+**自己练习（推荐先 Fork）**：打开仓库右上角 Fork → 复制到你自己的 GitHub 账号，再 clone：
+
+```bash
+git clone https://github.com/你的用户名/my-first-app.git
+cd my-first-app
+```
+
+**或直接 clone 原仓库**：
+
+```bash
+git clone https://github.com/gaolingfeng0419/my-first-app.git
+cd my-first-app
+```
+
+### 2. 安装依赖
+
+```bash
+npm install
+```
+
+### 3. 启动
+
+需要**同时**开两个终端（前端 + 后端是两个独立服务）：
+
+```bash
+# 终端 1：启动前端
+npm run dev
+
+# 终端 2：启动后端
+npm run server
+```
+
+### 4. 打开页面
+
+浏览器访问 → http://localhost:5173
+
+输入你的名字，开始闯关。
+
+> ⚠️ **关于排行榜**：页面上的「📊 闯关排行榜」需要后端（3001 端口）在跑。如果后端没启动，这里会显示「请求失败」——这是正常的，说明前端联调代码在工作，只是连不到后端。其它闯关功能不受影响。
+
+---
+
+## 🎯 怎么闯关
+
+打开页面后，你会看到 7 张关卡卡片。点任意一张卡片，弹出该关的：
+
+- **任务说明**：这关要干什么、为什么
+- **操作步骤**：分步清单
+- **📖 详细引导**：手把手教学，含可复制的代码、提示、常见坑
+- **通关条件**：做到什么算通关
+- **「标记通关」按钮**：完成后点亮，积累 XP
+
+关卡按顺序解锁（前一关通过，后一关才解锁）。全部通关后有庆祝页。
+
+### 7 关一览
+
+| # | 关卡 | 你将学会 |
+|---|------|---------|
+| 1 | 🚀 点亮你的名字 | 热更新（保存即变） |
+| 2 | 🧱 造第一个组件 | 组件化思维 |
+| 3 | 🎨 让它好看 | CSS 样式 |
+| 4 | 📡 接入真实数据 | 前后端联调（fetch） |
+| 5 | 🔀 提交你的代码 | Git 基础（init → commit → push） |
+| 6 | 🔃 发起 PR | 分支工作流与 Pull Request |
+| 7 | 🚢 上线！ | 部署到 Vercel |
+
+每关的「详细引导」里都有具体到「打开哪个文件、改哪一行、敲什么命令」的指引。卡住了也可以随时把问题贴给 Claude Code，让它帮你。
+
+---
+
+## 🗂️ 项目结构
+
+```
+my-first-app/
+├── src/
+│   ├── App.jsx                  # 主页面
+│   ├── data/levels.js           # 关卡数据（改这里就能调关卡内容）
+│   └── components/              # UI 组件
+│       ├── LevelCard.jsx        # 关卡卡片
+│       ├── LevelDetail.jsx      # 关卡详情弹窗（含详细引导渲染）
+│       ├── ProgressBar.jsx      # 进度条
+│       └── Leaderboard.jsx      # 排行榜（第 4 关联调示例）
+├── server/
+│   └── index.js                 # 后端服务（Express，进度/排行榜 API）
+└── package.json
+```
+
+想加关、改关内容、改文案，编辑 `src/data/levels.js` 即可，无需改组件代码。
+
+---
+
+## ❓ 常见问题
+
+**Q：保存代码后浏览器没变化？**
+确认 `npm run dev` 还在终端跑着（没被关掉）。看终端有没有红色报错，有就贴给 Claude Code。
+
+**Q：排行榜显示「请求失败」？**
+后端没启动。另开一个终端跑 `npm run server`，确认看到「✅ 后端服务启动: http://localhost:3001」。
+
+**Q：第 5/6 关的 Git 操作报错？**
+首次用 Git 要先配置身份：`git config --global user.name "你的名字"` 和 `user.email`。push 到 GitHub 需要登录认证（用 token 或 SSH，不是密码）——卡住就把报错贴给 Claude Code。
+
+**Q：线上版排行榜也是失败的？**
+是。后端只跑在你本机，Vercel 上没有。线上版用来展示闯关页面本身，联调部分在本地体验。
+
+---
+
+## 📄 License
+
+MIT — 自由使用、修改、分发。
