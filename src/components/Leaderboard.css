@@ -1,0 +1,152 @@
+.lb {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.lb__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.lb__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.lb__refresh {
+  background: #f5a623;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.lb__refresh:hover:not(:disabled) { background: #e09410; }
+.lb__refresh:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.lb__hint {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.lb__hint code,
+.lb__fix code {
+  font-family: 'SFMono-Regular', Menlo, monospace;
+  font-size: 11px;
+  background: #f6f6f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #f5a623;
+}
+
+/* 状态提示 */
+.lb__state {
+  padding: 24px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.lb__state--error {
+  color: #e74c3c;
+}
+
+.lb__fix {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* 列表 */
+.lb__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lb__empty {
+  text-align: center;
+  color: #aaa;
+  padding: 24px;
+  font-size: 14px;
+}
+
+.lb__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.lb__row:hover { background: #fafafa; }
+
+.lb__row--me {
+  background: #fff8e6;
+  border: 1px solid #ffe0a3;
+}
+
+.lb__rank {
+  font-size: 14px;
+  font-weight: 800;
+  color: #999;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.lb__rank--top { font-size: 18px; }
+
+.lb__name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lb__me-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f5a623;
+  margin-left: 6px;
+}
+
+.lb__count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* 自己的排名 */
+.lb__me {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+}
+
+.lb__me strong {
+  color: #f5a623;
+  font-size: 16px;
+}

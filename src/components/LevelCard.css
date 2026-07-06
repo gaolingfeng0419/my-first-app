@@ -1,0 +1,128 @@
+.level-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border: 2px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.level-card:hover:not(.locked) {
+  border-color: #f5a623;
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.15);
+  transform: translateY(-2px);
+}
+
+.level-card.done {
+  border-color: #52c41a;
+  background: #f6ffed;
+}
+
+.level-card.active {
+  border-color: #f5a623;
+  background: #fffbf0;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.2);
+}
+
+.level-card.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* 左侧编号区 */
+.level-card__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 44px;
+}
+
+.level-card__num {
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.level-card__emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* 主体内容 */
+.level-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.level-card__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.level-card__tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  color: #666;
+  white-space: nowrap;
+}
+
+.level-card.active .level-card__tag {
+  background: #fff3d0;
+  color: #b8860b;
+}
+
+.level-card.done .level-card__tag {
+  background: #d9f7be;
+  color: #389e0d;
+}
+
+.level-card__desc {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.level-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.level-card__xp {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f5a623;
+}
+
+.level-card__status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.status--done   { background: #52c41a; color: #fff; }
+.status--active { background: #f5a623; color: #fff; }
+.status--locked { background: #d9d9d9; color: #888; }
